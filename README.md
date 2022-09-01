@@ -1,4 +1,6 @@
-# Getting Started with Create React App
+# Practicing React with TypeScript
+
+This repository was intended to provide practice in building an SPA with the React framework with TypeScript. 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
