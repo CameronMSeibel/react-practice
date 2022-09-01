@@ -33,10 +33,12 @@ function ExercisePage() {
 
     return (
         <>
-            <h1>Exercises!</h1>
-            { !exercises ? 
-            <h1>Loading...</h1> : 
-            exercises.map((exercise: ExerciseData) => <Exercise key={exercise.id} exercise={exercise} />) }
+            <h1 style={{textAlign: "center"}}>Exercises!</h1>
+            <main style={{display: "flex", flexDirection: "column"}}>
+                { !exercises ? 
+                <h2>Loading...</h2> : 
+                exercises.map((exercise: ExerciseData) => <Exercise key={exercise.id} exercise={exercise} />) }
+            </main>
         </>
     );
 }
