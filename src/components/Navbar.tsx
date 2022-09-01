@@ -1,12 +1,5 @@
 import { CSSProperties } from "react";
-import { Link } from "react-router-dom";
-
-const link: CSSProperties = {
-    display: "block",
-    padding: "0.5rem 1rem",
-    textDecoration: "none",
-    
-}
+import NavItem from "./NavItem";
 
 const list: CSSProperties = {
     listStyleType: "none",
@@ -15,16 +8,13 @@ const list: CSSProperties = {
     backgroundColor: "#dddddd"
 }
 
-const listItem: CSSProperties = {
-    display: "inline-block"
-}
-
 export default function Navbar() {
+
     return (
         <nav>
             <ul style={list}>
-                <li style={listItem}><Link to="/" style={link}>Home</Link></li>
-                <li style={listItem}><Link to="/exercises" style={link}>Exercises</Link></li>
+                <NavItem path="/" text="Home" />
+                <NavItem path="/exercises" text="Exercises" />
             </ul>
         </nav>
     );
