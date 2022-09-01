@@ -25,25 +25,16 @@ function CredentialsForm({ type }: CredentialsFormProps) {
         if(type === "Register") {
             setValidPassword(password.length >= MIN_PW_LENGTH && password === confirmPassword);
         } else {
-            console.log(password.length, MIN_PW_LENGTH)
             setValidPassword(password.length >= MIN_PW_LENGTH);
         }
     }
 
-    function handleConfirmPasswordChange(event: React.ChangeEvent<HTMLInputElement>) {
-        setConfirmPassword(event.target.value);
-    }
-
-    function handlePasswordChange(event: React.ChangeEvent<HTMLInputElement>) {
-        setPassword(event.target.value);
-    }
-
     function handleLogin() {
-
+        // TODO: Log a user in in some type of way
     }
 
     function handleRegister() {
-
+        // TODO: Register a user in some type of way
     }
 
     function submit() {
@@ -67,9 +58,9 @@ function CredentialsForm({ type }: CredentialsFormProps) {
         <>
             <input id="username" type="text" placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)} />
             <br />
-            <input style={passwordStyles} type="password" placeholder="Password" value={password} onChange={handlePasswordChange} />
+            <input style={passwordStyles} type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
             <br />
-            { type === "Register" && <><input style={passwordStyles} type="password" placeholder="Confirm Password" value={confirmPassword} onChange={handleConfirmPasswordChange} /><br /></> }
+            { type === "Register" && <><input style={passwordStyles} type="password" placeholder="Confirm Password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} /><br /></> }
             { !validPassword && <p style={{color: "red", fontSize: "0.75rem", marginTop: 0}}>A valid password must be {MIN_PW_LENGTH} characters in length{type === "Register" && " and match the confirm password field"}.</p> }
             <button 
                 style={{display: "block", cursor: "pointer"}} 
