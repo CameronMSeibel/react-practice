@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 interface CredentialsFormProps {
   type: CredentialsFormType
@@ -20,7 +20,7 @@ function CredentialsForm({ type }: CredentialsFormProps) {
     // triggers a callback when state variables in the dependency array are changed
     // With no dependency array, all state variables trigger callback
     // Empty dependency array triggers callback on element loading
-    useEffect(() => console.log(username), [username]);
+    // useEffect(() => console.log(username), [username]);
 
 
     return (

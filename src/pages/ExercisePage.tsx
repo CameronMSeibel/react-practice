@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import Exercise from "../components/Exercise";
+import { WORKOUT_API } from "../ApiConfig";
 
 export interface ExerciseData {
     id: number;
@@ -12,10 +13,6 @@ export interface ExerciseData {
     variations: Array<number>;
 }
 
-const tempExercises: Array<ExerciseData> = [
-
-];
-
 function ExercisePage() {
 
     const [exercises, setExercises] = useState<Array<ExerciseData> | null>(null);
@@ -23,7 +20,15 @@ function ExercisePage() {
     useEffect(fetchData, []);
 
     function fetchData(): void {
-        setExercises(tempExercises);
+        // setExercises(tempExercises);
+        WORKOUT_API.get("/exercise?language=2")
+            .then(response => setExercises(mapData(response.data)))
+    }
+
+    function mapData(data: any): Array<ExerciseData> {
+        return data.results.map(({id, name, description, category, muscles, equipment, variations}: any) => {
+            return { id, name, description, category, muscles, equipment, variations };
+        });
     }
 
     return (
@@ -31,7 +36,7 @@ function ExercisePage() {
             <h1>Exercises!</h1>
             { !exercises ? 
             <h1>Loading...</h1> : 
-            exercises.map((exercise: ExerciseData) => <Exercise exercise={exercise} />) }
+            exercises.map((exercise: ExerciseData) => <Exercise key={exercise.id} exercise={exercise} />) }
         </>
     );
 }

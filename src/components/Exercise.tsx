@@ -7,9 +7,9 @@ interface ExerciseProps {
 function Exercise({ exercise }: ExerciseProps) {
     return (
         <div>
-            <h3>{exercise.id}</h3>
+            <h3>Exercise {exercise.id}</h3>
             <p>{exercise.name}</p>
-            <td dangerouslySetInnerHTML={{__html: exercise.description}} />
+            <p>Description: <span dangerouslySetInnerHTML={{__html: exercise.description}} /></p>
         </div>
     );
 }
